@@ -1,25 +1,13 @@
 #!/usr/bin/env bash
 
-# update & add relevant alpine linux packages
-echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-apk update
-apk add --no-cache hping3
-apk add --no-cache curl
-apk add --no-cache jq
-apk add --no-cache tzdata
-
-# set the container timezone
-ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime
-
 # define list of mobile devices
 declare -A phone_list
-phone_list[192.168.0.80]=6c:4d:73:f0:9d:b8 # Jeff's iPhone
-phone_list[192.168.0.81]=54:33:cb:7f:e5:0f # Heather's iPhone
-phone_list[192.168.10.80]=78:7e:61:74:62:11 # Terry's iPhone
-phone_list[192.168.10.81]=70:3e:ac:5c:c9:db # Nancy's iPhone
+phone_list[192.168.0.80]=6c:4d:73:f0:9d:b8 # iPhone 1
+phone_list[192.168.0.81]=54:33:cb:7f:e5:0f # iPhone 2
+# add list items as necessary
 
 # define log location
-log_location="/usr/logs/home_mode_manager_log.txt"
+log_location="home_mode_manager.log"
 
 # define Synology API parameters
 api_target="192.168.0.5:5000"
